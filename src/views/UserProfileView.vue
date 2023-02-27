@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2>Max || Tim's</h2>
     
   </div>
 </template>
@@ -9,9 +8,6 @@ export default {
   
 }
 </script>
-<style scoped>
-h2 {
-  color: black;
-}
+<style>
   
 </style>
