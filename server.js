@@ -1,28 +1,29 @@
-const cors = require('cors');
-const express = require('express');
-// const cookieParser = require('cookie-parser')
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
 var corsOptions = {
-    origin: 'http://localhost:8080'
-}
+  origin: "http://localhost:8080"
+};
 
 app.use(cors(corsOptions));
 
+// parse requests of content-type - application/json
 app.use(express.json());
 
-app.use(express.urlencoded({extended: true}));
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-    res.json({ message: 'Welcome to the app'})
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to the api." });
 });
 
-require('./app/routes/routes.js');
+require("./routes/routes.js")(app);
 
-require('dotenv').config();
-const PORT = process.env.PORT || 2220;
+// set port, listen for requests
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
-})
- 
+  console.log(`Server is running on port ${PORT}.`);
+});
