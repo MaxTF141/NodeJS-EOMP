@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer fixed-bottom"> Copyright &copy; 2023</footer>
+    <footer class="footer static-bottom"> Copyright &copy; 2023</footer>
 
 </template>
 <script>
@@ -16,6 +16,7 @@ footer {
     color: black;
     box-shadow: 0 2px 8px 0 black;
     font-family: 'Mynerve', cursive;
+    text-align: center;
 }
     
 </style>

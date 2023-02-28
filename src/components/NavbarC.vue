@@ -1,7 +1,7 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark p-3" id="headerNav">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top p-3" id="headerNav">
         <div class="container-fluid">
-            <img src="https://i.postimg.cc/k5pmHKzs/pnghut-spider-man-venom-drawing-comics-sketch-amazing-spiderman-speed.png" height="80" />
+            <img src="https://i.postimg.cc/j2wtSxWH/pngwing-com.png" height="80" />
           <!-- <a class="navbar-brand d-block d-lg-none" href="#">
             <img src="https://i.postimg.cc/k5pmHKzs/pnghut-spider-man-venom-drawing-comics-sketch-amazing-spiderman-speed.png" height="80" />
           </a> -->
@@ -30,9 +30,6 @@
                     <li class="nav-item nav-link mx-2">
                       <router-link to="/login">Login</router-link>
                     </li>
-                    <li class="nav-item nav-link mx-2">
-                      <router-link to="/register">Register</router-link>
-                    </li>
                     <li class="nav-item nav-link mx2">
                         <router-link to="/userprofile"><i class="bi bi-person-circle"></i></router-link>
                     </li>
@@ -52,10 +49,9 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Mynerve&display=swap');
 .navbar {
     background-color: white;
-    color: white;
-    outline: black;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    opacity: 0.9;
     font-family: 'Mynerve', cursive;
+    font-size: 30px;
 }
 a {
     color: black;
@@ -63,7 +59,16 @@ a {
     font-size: larger;
 }
 
-@media screen and (min-width:992px){
+a:hover {
+  color: crimson;
+}
+
+button {
+  background-color: crimson;
+}
+
+
+@media screen and (min-width:300px){
     .nav-item {
     line-height:80px;
     }
