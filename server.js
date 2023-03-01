@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require('cookie-parser')
 
 const app = express();
 
@@ -10,15 +11,18 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
-app.use(express.json());
+app.use(
+  cookieParser(),
+  express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
 // simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the api." });
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/views/index.html');
 });
+
 
 require("./routes/routes.js")(app);
 

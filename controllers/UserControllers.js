@@ -37,7 +37,7 @@ exports.create = async (req, res) => {
       });
     else {
       const jwt = createToken(user);
-      res.cookie('LegitUser', jwt, {
+      res.cookie('Legit', jwt, {
         maxAge: 3600000,
         httpOnly: true
       });
@@ -63,7 +63,7 @@ exports.loginUser = async (req, res) => {
           // Create a token
           const jwt = createToken({emailAdd, userPass});
           // Saving
-          res.cookie('LegitUser',
+          res.cookie('Legit',
             jwt, {
             maxAge: 3600000,
             httpOnly: true

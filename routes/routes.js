@@ -1,3 +1,6 @@
+const { requireAuth } = require('../middleware/RequireAuth.js');
+const { verifyAToken, createToken } = require('../middleware/AuthenticatedUser.js');
+
 module.exports = app => {
     var router = require("express").Router();
 
@@ -21,7 +24,7 @@ module.exports = app => {
   
     router.get("/products", product.findAll);
 
-    router.get("/product/:id", product.findOne);
+    router.get("/product/:id", verifyAToken, requireAuth, product.findOne);
   
     router.put("/product/:id", product.update);
   
