@@ -11,18 +11,6 @@
         <a href="/products"><button id="breathing-button">Products</button></a>
       </div>
     </div>
-
-
-
-
-
-
-    
-
-
-
-
-
   </body>
    
 </template>
@@ -49,6 +37,7 @@ header h1 {
   font-size: 100px;
   font-family: 'Mynerve', cursive;
   padding-top: 150px;
+  text-shadow: 20px 20px 0 black;
 }
 
 .col-6 {

@@ -27,6 +27,7 @@
 
                 <div class="form-outline mb-4">
                     <input type="numbers" id="form3Example3cg" required class="form-control form-control-lg" />
+                    <i class="bi bi-telephone"></i>
                     <label class="form-label" for="form3Example3cg">Cellphone no.</label>
                   </div>
 
@@ -44,20 +45,29 @@
                       <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
                         value="option2" />
                       <label class="form-check-label" for="maleGender">Male</label>
-                    </div>
-    
-                  </div>  
+                    </div>   
+                  </div> 
+                  
+                  <div class="form-check form-check-inline">
+                    <input type="text" required class="form-control form-control-lg" />
+                    <i class="bi bi-person-video"> </i>
+                    <label class="form-label" for="form3Example3cg">User Profile Picture</label>
+                  </div>
 
                 <div class="form-outline mb-4">
                   <input type="email" id="form3Example3cg" required class="form-control form-control-lg" />
+                  <i class="bi bi-envelope"></i>
                   <label class="form-label" for="form3Example3cg">Email</label>
                 </div>
 
                 <div class="form-outline mb-4">
                   <input type="password" id="form3Example4cg" required class="form-control form-control-lg" />
+                  <i class="bi bi-unlock"></i>
                   <label class="form-label" for="form3Example4cg">Password</label>
                 </div>
-
+                <div class="form-control-wrapper">  
+                  <label class="form-control bg-gradient" v-show="userMsg">{{userMsg}}</label>
+                </div>
                 <div class="d-flex justify-content-center">
                   <button type="button"
                     class="btn btn-block btn-lg gradient-custom-4 text-body">Register</button>
@@ -84,6 +94,7 @@ body {
     background-image: url(https://i.postimg.cc/NMRKys2w/94669.jpg);
     background-size: contain;
     image-rendering: -webkit-optimize-contrast;
+    
 }
 .mask {
     padding-top: 150px;
@@ -93,6 +104,10 @@ body {
 
 label {
     font-size: large;
+}
+
+input {
+  border-color: black;
 }
 
 

@@ -1,9 +1,3 @@
-
-import NavbarC from './components/NavbarC.vue';
-
-
-import NavbarC from './components/NavbarC.vue';
-
 <template>
   <Navbar />
   <router-view/>

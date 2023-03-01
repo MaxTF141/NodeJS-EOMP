@@ -30,6 +30,9 @@
                     <li class="nav-item nav-link mx-2">
                       <router-link to="/login">Login</router-link>
                     </li>
+                    <li class="nav-item nav-link mx-2">
+                      <router-link to="/admin">Admin</router-link>
+                    </li>
                     <li class="nav-item nav-link mx2">
                         <router-link to="/userprofile"><i class="bi bi-person-circle"></i></router-link>
                     </li>

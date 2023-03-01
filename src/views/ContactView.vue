@@ -74,7 +74,7 @@ export default {
 
 
 
-<style>
+<style scoped>
 
 #contact {
     padding-top: 150px;
@@ -86,7 +86,9 @@ export default {
     overflow: hidden;  
 }
 
-
+.container-fluid {
+    opacity: 0.9;
+}
 
 h2 {
     color: white;
@@ -95,6 +97,21 @@ h2 {
 p {
     font-size: 30px;
     color: white;
+}
+
+label {
+    font-weight: bolder;
+}
+
+#form_message {
+    border-color: black;
+    font-weight: bolder;
+}
+
+
+input {
+    border-color: black;
+    font-weight: bolder;
 }
 
 .btn {
