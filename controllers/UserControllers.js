@@ -1,4 +1,4 @@
-const User = require("../models/Usermodel.js");
+const User = require("../models/UserModel.js");
 
 const { hash, compare, hashSync } = require('bcrypt');
 
