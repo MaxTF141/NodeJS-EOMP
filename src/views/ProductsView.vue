@@ -4,40 +4,38 @@
             <h2>Products</h2>
         </header>
         <div class="navigators">
-            <div class="filter">
-                <label class="filter-select" for="filter">Filter by:</label>
-                <select class="filter-select" id="filter" v-model="filterBy">
-                    <option value="all">All</option>
-                    <option value="Marvel">Marvel</option>
-                    <option value="DC">DC</option>
-                </select>
+            <div class="row">
+
+            <div class="filter col-4">
+                <button id="filter" @click="sortCategory">Category</button>
             </div>
 
-            <div class="sort">
-                <label class="filter-label" for="sort">Sort by:</label>
-                <select class="filter-select" id="sort" v-model="sortBy">
-                    <option value="name">Name</option>
-                    <option value="price">Price</option>
-                </select>
+            <div class="sort col-4">
+                <button id="sort" @click="sortPrice"><i class="bi bi-arrow-down"></i>Price<i class="bi bi-arrow-up"></i></button>
             </div>
-             <div class="search">
-                 <label class="filter-label" for="search">Search:</label>
-                 <input class="filter-input" id="search" v-model="searchQuery" type="text" placeholder="Search">
+
+             <div class="search col-4">
+                 <input class="filter-input" id="search" v-model="searching" type="text" placeholder="Search">
              </div>
+            </div>
         </div>
 
         <div class="container">
-             <div class="row">
-                <div class="product-item g-5" v-for="product in products" :key="product.id" style="width: 18rem;">
-                    <img :src="product.imgURL" class="card-img-top">
-                    <div class="card-body">
-                      <h5 class="card-title">{{product.prodName}}</h5>
-                      <div class="card-text">{{product.category}}</div>
-                      <div class="card-text">{{product.prodDescription}}</div>
-                      <div class="card-text">R{{product.price}}</div>
-                      <a href="#" class="btn btn-primary">View Item</a>
-                    </div>
-                  </div>    
+            <SpinnerC v-if="isLoading"/>
+            <div v-else>
+             <div class="row"  v-if="filtering.length">
+                    <div class="product-item g-5" v-for="product in filtering" :key="product.id" style="width: 18rem;">
+                        <img :src="product.imgURL" class="card-img-top" >
+                        <div class="card-body">
+                          <h5 class="card-title">{{product.prodName}}</h5>
+                          <div class="card-text">{{product.category}}</div>
+                          <!-- <div class="card-text">{{product.prodDescription}}</div> -->
+                          <div class="card-text">R{{product.price}}</div>
+                          <a href="/singleproduct" class="btn" >View Item</a>
+                        </div>
+                      </div>
+                    </div> 
+                      <div id="waldo" v-else>Can't find that one buddy</div>   
             </div>
         </div>
        
@@ -47,12 +45,28 @@
 <script>
 import {useStore} from 'vuex';
 import {computed} from '@vue/runtime-core';
+import SpinnerC from '../components/SpinnerC.vue';
+
 
 export default {
+    components: {
+        SpinnerC
+    },
+    data(){
+        return {
+            isLoading: true,
+            searching: ''
+        }
+    },
+    created(){
+        setTimeout(()=> {
+            this.isLoading = false;
+        },2000);
+    },
     setup() {
         const store = useStore();
         store.dispatch("fetchProducts");
-        let products = computed(() => store.state.products)
+        let products = computed(() => this.$store.state.products)
         return{
             products,
         },
@@ -64,48 +78,53 @@ export default {
         }
     },
     computed: {
-        sortedAndFilteredProducts() {
-            let sortedProducts = this.sortProducts();
-            let filteredProducts = this.filteredProducts(sortedProducts);
-            let searchedProducts = this.searchProducts(filteredProducts);
-            return searchedProducts;
+        products() {
+            return this.$store.state.products;      
+        },
+        filtering() {
+            if(this.searching.trim().length > 0){
+                return this.products.filter((name)=> name.prodName.toLowerCase().includes(this.searching.trim()))
+            }
+            return this.products
         }
-    },
+},
     methods: {
-        sortProducts() {
-            let sortKey = this.sortBy;
-            return this.products.sort((a, b) => {
-                if (a[sortKey] < b[sortKey]) return -1;
-                if (a[sortKey] > b[sortKey]) return 1;
-                return 0;
-            });
+        sortPrice(){
+            this.$store.commit("sortProductsPrice")
         },
-        filteredProducts(products) {
-            if (this.filterBy === 'all') {
-                return products;
-            } else {
-                return products.filter(product => product.category === this.filterBy);
-            }
-        },
-        searchProducts(products) {
-            if (this.searchQuery === '') {
-                return products;
-            } else {
-                return products.filter(product => product.name.toLowerCase().includes(this.searchQuery.toLowerCase()));
-            }
-        }
-    }
-    
 }
+}
+
+
+
+
 </script>
 
 <style scoped>
 
 body {
     padding-top: 150px;
+    background-image: url(https://i.postimg.cc/FKHsdmpR/39488-Gotham-City-Night-Gotham-City-HD-Wallpaper.png);
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden; 
+    color: white; 
 }
 
 header h2{
+    text-align: center;
+    font-size: 100px;
+    font-family: 'Mynerve', cursive;
+    color: white;
+}
+
+img {
+    height: 400px
+}
+
+#waldo {
+    padding-top: 150px;
     text-align: center;
     font-size: 100px;
     font-family: 'Mynerve', cursive;
@@ -114,6 +133,12 @@ header h2{
 .navigators {
     display: flex;
     justify-content: space-evenly;
+}
+
+.btn {
+    border-color: white;
+    background-color: crimson;
+    color: white;
 }
 
 #filter{
@@ -155,6 +180,18 @@ header h2{
     width: 100px;
 }
 
+
+#search {
+    border-radius: 25px;
+    border-color: white;
+    background-color: black;
+    color: white;
+    font-family: 'Mynerve', cursive;
+    height: 50px;
+    width: 100px;
+}
+
+
 #searchbar {
     padding: 15px;
     border-radius: 10px;
@@ -174,5 +211,34 @@ input[type=text]:focus {
     justify-content: space-between;
     margin: auto;
 }
-    
+
+@media screen and (max-width: 720px) {
+
+    header {
+        width: 100%;
+    }
+
+    .container {
+        width: 100%;
+        justify-content: center;
+        overflow: hidden;
+    }
+    .filter {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .sort {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .search{
+        width: 100%;
+        overflow: hidden;
+    }
+
+}    
+
+
 </style>

@@ -1,7 +1,7 @@
 <template>
 <section id="contact">
     <h2 class="display-3 text-center">Contact</h2>
-    <p class="text-center">If you have any questions or want to contact us, feel free to use the form below</p>
+    <p class="text-center">If you have any questions or want to contact us, feel free to use the form below...</p>
     
     <div class="container-fluid pb-5">
          <div class="row d-flex flex-column flex-md-row">
@@ -114,7 +114,9 @@ input {
     font-weight: bolder;
 }
 
-.btn {
-    margin-left: 300px;
+@media screen and (max-width: 720px)  {
+    .btn {
+        justify-items: center;
+    }
 }
 </style>

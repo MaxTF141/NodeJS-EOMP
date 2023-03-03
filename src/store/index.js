@@ -9,6 +9,7 @@ export default createStore({
     user: null,
     products: null,
     product: null,
+    asc: true,
     showSpinner: true
   },
   getters: {
@@ -31,7 +32,16 @@ export default createStore({
       },
       setMessage(state, values) {
         state.message = values
-      }
+      },
+      sortProductsPrice: (state) => {
+        state.products.sort((a, b) => {
+          return a.price - b.price;
+        });
+        if (!state.asc) {
+          state.products.reverse()
+        }
+        state.asc = !state.asc
+      },
   },
   actions: {
     async login(context, payload) {
@@ -43,7 +53,7 @@ export default createStore({
         context.commit('setMessage', err)
       }
     },
-    async register(context, payload) {
+    async registerUser(context, payload) {
       const res = await axios.post(`${DeadTales}register`, payload)
       const {msg, err} = await res.data;
       if(msg) {

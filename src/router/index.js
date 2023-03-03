@@ -36,6 +36,10 @@ const routes = [
     path: '/userprofile',
     name: 'User Profile',
     component: () => import('../views/UserProfileView.vue')
+  },
+  {
+    path: '/singleproduct',
+    name: 'singl'
   }
 ]
 

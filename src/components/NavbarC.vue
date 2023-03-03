@@ -25,13 +25,16 @@
                     <li class="nav-item nav-link mx-2">
                       <router-link to="/contact">Contact</router-link>
                     </li>
+                    <li class="nav-item nav-link mx-2">
+                      <router-link to="/admin">Admin</router-link>
+                    </li>
                 </div>
-                <div class="d-flex">
+                <div class="right d-flex">
                     <li class="nav-item nav-link mx-2">
                       <router-link to="/login">Login</router-link>
                     </li>
                     <li class="nav-item nav-link mx-2">
-                      <router-link to="/admin">Admin</router-link>
+                      <router-link to="/register">Register</router-link>
                     </li>
                     <li class="nav-item nav-link mx2">
                         <router-link to="/userprofile"><i class="bi bi-person-circle"></i></router-link>
@@ -62,6 +65,11 @@ a {
     font-size: larger;
 }
 
+.right {
+  display: flex;
+  justify-content: end;
+}
+
 a:hover {
   color: crimson;
 }
@@ -71,9 +79,12 @@ button {
 }
 
 
-@media screen and (min-width:300px){
-    .nav-item {
-    line-height:80px;
+@media screen and (min-width:720px){
+
+    .d-flex {
+      width: 100%;
+      text-align: center;
     }
+
   }
 </style>

@@ -1,31 +1,47 @@
 <template>
-<body>        
-    <div class="login">
-        <div class="container">
-            <div class="header">
-                <h1>LOGIN</h1>
-            </div>
-            <div class="main">
-                <form action="">
-                    <i class="bi bi-person-fill"></i>
-                    <input type="text" placeholder="username" name=""><br>
-                    <i class="bi bi-unlock-fill"></i>
-                    <input type="password" placeholder="password"  name=""><br>
-                    <button>login</button>
-                </form>
-            </div>
-            <div class="footer">
-                <a href="">Forgot Your Password?</a>
-                <a href="/register">Don't Have An Account? Register</a>
-            </div>
-        </div>  
-    </div>
-</body>
+    <body>        
+        <div class="login">
+            <div class="container">
+                <div class="header">
+                    <h1>LOGIN</h1>
+                </div>
+                <div class="main">
+                    <form @submit.prevent="loginCredentials">
+                        <i class="bi bi-person-fill"></i>
+                        <input type="text" placeholder="username" v-model="login.emailAdd" required><br>
+                        <i class="bi bi-unlock-fill"></i>
+                        <input type="password" placeholder="password" v-model="login.userPass" required><br>
+                        <button type="submit">login</button>
+                    </form>
+                </div>
+                <div class="footer">
+                    <a href="">Forgot Your Password?</a>
+                    <a href="/register">Don't Have An Account? Register</a>
+                </div>
+            </div>  
+        </div>
+    </body>
 
 </template>
 <script>
+
 export default {
-    
+    data(){
+        return {
+            login: {
+                emailAdd: '',
+                userPass: ''
+            }
+        }
+    },
+    methods: {
+        async loginCredentials() {
+            await this.$store.dispatch('loginUser', this.login);
+            this.login.emailAdd = '',
+            this.login.userPass = ''
+        }
+    }
+
 }
 </script>
 <style scoped>
@@ -52,9 +68,10 @@ body {
 }
 
 .header {
-    height: 100px;
+    height: 130px;
     background-color: crimson;
-    border-radius: 25px 25px 50px 0; 
+    border-radius: 25px 25px 50px 0;
+    outline: black;
     text-align: center; 
 }
 
@@ -64,7 +81,7 @@ body {
     text-align: center;
     font-size: 75px;
     letter-spacing: 2px;
-    font-family: 'Mynerve', cursive;
+    font-family: 'Mynerve', cursive;;
 }
 
 .main {

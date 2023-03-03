@@ -1,7 +1,8 @@
 <template>
   <body>
     <header>
-      <h1>Dead-Man's-Tales</h1>
+      <h1 data-aos="fade-up"
+      data-aos-duration="3000">Dead-Man's-Tales</h1>
     </header>
     <div class="row">
       <div class="col-6">
@@ -113,5 +114,21 @@ header h1 {
 }
 }
 
-  
+@media screen and (max-width: 720px) {
+
+  h1{
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .col-6{
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+
+
 </style>
