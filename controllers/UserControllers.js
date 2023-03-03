@@ -38,8 +38,7 @@ exports.create = async (req, res) => {
     else {
       const jwt = createToken(user);
       res.cookie('Legit', jwt, {
-        maxAge: 3600000,
-        httpOnly: true
+        maxAge: 3600000
       });
       res.status(200).json({ message: "A user record was saved." })
     }
