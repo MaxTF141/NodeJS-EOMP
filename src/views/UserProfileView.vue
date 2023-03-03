@@ -7,17 +7,17 @@
           <div class="card" style="border-radius: 15px;">
             <div class="card-body text-center">
               <div class="mt-3 mb-4">
-                <img src=""
-                  class="rounded-circle img-fluid" style="width: 100px;" />
+                <img src="https://i.postimg.cc/VvgTx0Ph/DSC-3588.jpg"
+                  class="rounded-circle img-fluid" style="width: 200px;" />
               </div>
-              <h4 class="mb-2">name + surname</h4>
-              <p class="text-muted mb-4">gender <span class="mx-2"></span> </p>
+              <h4 class="mb-2">Maxwill Isaacs</h4>
+              <p class="text-muted mb-4">Male <span class="mx-2"></span> </p>
               <div class="d-flex justify-content-between text-center mt-5 mb-2">
                 <div>
-                  <p class="text-muted mb-0">email.addy<span class="mx-2"></span></p>
+                  <p class="text-muted mb-0">isaacsmaxwill10@gmail.com<span class="mx-2"></span></p>
                 </div>
                 <div class="px-3">
-                  <p class="text-muted mb-0">cell.no <span class="mx-2"></span></p>
+                  <p class="text-muted mb-0">067 274 6346<span class="mx-2"></span></p>
                 </div>
               </div>
             </div>
@@ -54,9 +54,8 @@ section {
   overflow: hidden; 
 }
 
-
-
 .card {
+  margin-top: 150px;
   border-color: black;
 }
   

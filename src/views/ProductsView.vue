@@ -31,7 +31,7 @@
                           <div class="card-text">{{product.category}}</div>
                           <!-- <div class="card-text">{{product.prodDescription}}</div> -->
                           <div class="card-text">R{{product.price}}</div>
-                          <a href="/singleproduct" class="btn" >View Item</a>
+                          <a href="../views/SingleProductView.vue" class="btn" >View Item</a>
                         </div>
                       </div>
                     </div> 
@@ -108,7 +108,6 @@ body {
     min-height: 100vh;
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden; 
     color: white; 
 }
 

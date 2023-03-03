@@ -3,6 +3,8 @@
         <!-- <h2>Admin Page</h2> -->
       <div class="container">
         <h3>Products</h3>
+        <SpinnerC v-if="isLoading" />
+        <div v-else>
         <table class="table mx-5">
             <thead>
               <tr>
@@ -27,40 +29,30 @@
               </tr>
             </tbody>
           </table>
+          </div>
           <br>
-          <!-- <table class="table mx-5">
-            <thead>
-              <tr>
-                <th scope="col">User ID</th>
-                <th scope="col">Firstname</th>
-                <th scope="col">Lastname</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Cellphone Number</th>
-                <th scope="col">Email Address</th>
-              </tr>
-            </thead>
-            <tbody v-for="user in users" :key="user.id">
-              <tr>
-                <td>{{user.userID}}</td>
-                <td>{{user.firstName}}</td>
-                <td>{{user.lastName}}</td>
-                <td>{{user.gender}}</td>
-                <td>{{user.cellphoneNumber}}</td>
-                <td>{{user.emailAdd}}</td>
-              </tr>
-            </tbody> -->
-          <!-- </table> -->
-    
-
-
         </div> 
     </div>
 </template>
 <script>
 import {useStore} from 'vuex';
 import {computed} from '@vue/runtime-core';
+import SpinnerC from '../components/SpinnerC.vue'
 
 export default {
+  components: {
+    SpinnerC
+  },
+  data(){
+    return {
+      isLoading: true
+    }
+  },
+  created(){
+    setTimeout(()=> {
+      this.isLoading = false;
+    },2000);
+  },
   setup() {
         const store = useStore();
         store.dispatch("fetchProducts");
@@ -119,11 +111,13 @@ h3 {
 
 #delete {
   background-color: crimson;
+  border-color: white;
   color: white;
 }
 
 #update {
   background-color: black;
+  border-color: white;
   color: white;
 }
 
